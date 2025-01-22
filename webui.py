@@ -24,14 +24,6 @@ from modules.ui_gradio_extensions import reload_javascript
 from modules.auth import auth_enabled, check_auth
 from modules.util import is_json
 
-# Custom CSS for resizing the logo
-demo.css = """
-        #logo-image img {
-            width: 200px;
-            height: auto;
-            display: block;
-        }"""
-
 def get_task(*args):
     args = list(args)
     args.pop(0)
