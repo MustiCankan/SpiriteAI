@@ -24,6 +24,14 @@ from modules.ui_gradio_extensions import reload_javascript
 from modules.auth import auth_enabled, check_auth
 from modules.util import is_json
 
+# Custom CSS for resizing the logo
+demo.css = """
+        #logo-image img {
+            width: 200px;
+            height: auto;
+            display: block;
+        }"""
+
 def get_task(*args):
     args = list(args)
     args.pop(0)
@@ -145,7 +153,7 @@ def inpaint_mode_change(mode, inpaint_engine_version):
 
 reload_javascript()
 
-title = f'Fooocus {fooocus_version.version}'
+title = f'Spirit AI Model Extractor (SAME)'
 
 if isinstance(args_manager.args.preset, str):
     title += ' ' + args_manager.args.preset
@@ -158,7 +166,7 @@ with shared.gradio_root:
     with gr.Row():
         with gr.Column(scale=2):
             gr.Markdown("### Spirit AI Model Extractor (SAME) v1.1.0", elem_id="name_l")
-            inputs=gr.Image(value="logo.png")
+            inputs=gr.Image(value="logo.png",elem_id="logo-image")
         with gr.Column(scale=2):
             with gr.Row():
                 progress_window = grh.Image(label='Preview', show_label=True, visible=False, height=768,
