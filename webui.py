@@ -156,8 +156,9 @@ with shared.gradio_root:
     currentTask = gr.State(worker.AsyncTask(args=[]))
     inpaint_engine_state = gr.State('empty')
     with gr.Row():
-        gr.Markdown("### Spirit AI Model Extractor (SAME) v1.1.0", elem_id="name_l")
-        inputs=gr.Image(type="/Users/mustafacankanbalci/spiriteai/logo.png")
+        with gr.Column(scale=2):
+            gr.Markdown("### Spirit AI Model Extractor (SAME) v1.1.0", elem_id="name_l")
+            inputs=gr.Image(value="logo.png")
         with gr.Column(scale=2):
             with gr.Row():
                 progress_window = grh.Image(label='Preview', show_label=True, visible=False, height=768,
